@@ -1,0 +1,8 @@
+# Source data: download it yourself, see data/raw/README.md
+data/raw/*
+!data/raw/README.md
+
+# Power BI local files
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.pbix.bak

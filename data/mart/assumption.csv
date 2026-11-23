@@ -1,0 +1,18 @@
+assumption,value,unit,source,basis
+Annual fee: classic card,300,CZK p.a.,Assumed,Card fees are not itemised in the transactions.
+Annual fee: gold card,1000,CZK p.a.,Assumed,Card fees are not itemised in the transactions.
+Annual fee: junior card,100,CZK p.a.,Assumed,Card fees are not itemised in the transactions.
+Discount rate (cost of capital),0.100,rate p.a.,Assumed,Default for exported CLV. The Power BI report overrides it with a what-if parameter.
+Fixed cost to serve an account,500,CZK p.a.,Assumed,"Statements, compliance, platform cost allocated per account."
+Funds transfer price on deposits,0.075,rate p.a.,Assumed,Rate the bank earns on customer deposits when lent on internally. Set 2.6pp above the 4.9% the bank is observed paying depositors.
+High-value floor,750,CZK p.a.,Assumed,"Annualised value at or above this is High value. Close to the pooled 67th percentile (728), rounded."
+Interchange on card withdrawals,0.010,share,Assumed,Applied to observed card withdrawal volume.
+Loan spread over funding cost,0.060,rate p.a.,Assumed,"The loan table stores principal only (payments x duration = amount for all 682 loans), so interest income is not observable. A 6pp consumer-lending spread is assumed."
+Loss given default on loans in arrears,0.450,share,Assumed,"Applied to the outstanding balance of loans with status D (running, in debt). Finished-and-unpaid loans (status B) are taken at their observed unpaid balance."
+Mid-value floor,250,CZK p.a.,Assumed,"Annualised value at or above this is Mid value. Close to the pooled 33rd percentile (221), rounded so the rule is explainable."
+Minimum days open in a year to be given a state,180,days,Assumed,Shorter first years are too noisy to annualise.
+Passive threshold,1.0,txn/month,Assumed,Fewer than one discretionary transaction a month marks an account as Passive.
+Projection horizon,5,years,Assumed,"Same horizon as Cowan et al. (2023); typical for current-account, card and consumer-loan relationships."
+Variable cost per customer transaction,3.0,CZK,Assumed,Applied to customer-initiated transactions only (bank postings excluded).
+Expected credit loss on loans outstanding,0.0316,rate p.a.,Calibrated from data,"Unpaid balance on status-B loans plus LGD x remaining balance on status-D loans, divided by principal-years outstanding 1993-1998."
+Value persistence (rho),0.6925,share p.a.,Calibrated from data,Share of a customer's gap to their state average that survives one year (estimated).

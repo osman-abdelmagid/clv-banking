@@ -1,0 +1,64 @@
+/// History: annual value split into its five components.
+table 'Value Component'
+	lineageTag: adcfbccf-0f47-5d3d-814d-e1c545b8d40e
+
+	column 'Customer ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d1f3be72-6207-5439-bea9-f7f00b5d344a
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = User
+
+	column Year
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 20fbef8a-eff9-59b8-9363-6bb60e2c3b76
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column Component
+		dataType: string
+		lineageTag: d88c7806-fdef-5bbe-a891-296a900909f7
+		summarizeBy: none
+		sourceColumn: component
+		sortByColumn: 'Component sort'
+
+		annotation SummarizationSetBy = User
+
+	column 'Component sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 860bc0c0-6064-5a36-b1de-084e59870df1
+		summarizeBy: none
+		sourceColumn: component_sort
+
+		annotation SummarizationSetBy = User
+
+	column Amount
+		dataType: double
+		formatString: #,0
+		lineageTag: 6a9e67d8-6bdb-5cf5-a90c-eae765db1049
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = User
+
+	partition 'Value Component' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\fact_value_component.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"customer_id", Int64.Type}, {"year", Int64.Type}, {"component", type text}, {"component_sort", Int64.Type}, {"amount", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,100 @@
+/// History: one row per customer per calendar year.
+table 'Customer Year'
+	lineageTag: dfa6f8e7-3ccf-57c7-8dd9-81cb51a83e27
+
+	column 'Customer ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a451c275-3bbb-5faf-ada7-aa4b41db157f
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = User
+
+	column Year
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1bc71858-e8ae-5180-843c-199ffe2bf633
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column 'State ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 52a30a40-dff3-5253-93fc-b1ba4d519669
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = User
+
+	column 'Days open'
+		dataType: int64
+		formatString: 0
+		lineageTag: de2c982a-388e-5e9a-bf41-0ab939c1c45d
+		summarizeBy: none
+		sourceColumn: days_open
+
+		annotation SummarizationSetBy = User
+
+	column 'Average balance'
+		dataType: double
+		formatString: #,0
+		lineageTag: 7391e7d6-6a75-5e68-9dbb-12b2fd2256b2
+		summarizeBy: none
+		sourceColumn: avg_balance
+
+		annotation SummarizationSetBy = User
+
+	column 'Customer transactions'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 90602dbb-72ba-5733-9709-4a5ac5eb95a3
+		summarizeBy: none
+		sourceColumn: customer_transactions
+
+		annotation SummarizationSetBy = User
+
+	column 'Average loan outstanding'
+		dataType: double
+		formatString: #,0
+		lineageTag: 4734afff-71ba-53ca-8af7-52d86ab4dcb2
+		summarizeBy: none
+		sourceColumn: avg_loan_outstanding
+
+		annotation SummarizationSetBy = User
+
+	column 'Annual value'
+		dataType: double
+		formatString: #,0
+		lineageTag: 994ce1ba-0562-5773-99a7-c66515e11e14
+		summarizeBy: none
+		sourceColumn: annual_value
+
+		annotation SummarizationSetBy = User
+
+	column 'Annualised value'
+		dataType: double
+		formatString: #,0
+		lineageTag: 74d2f9cb-cf33-54b3-9536-527ce1c60ad7
+		summarizeBy: none
+		sourceColumn: annualised_value
+
+		annotation SummarizationSetBy = User
+
+	partition 'Customer Year' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\fact_customer_year.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"customer_id", Int64.Type}, {"year", Int64.Type}, {"state_id", Int64.Type}, {"days_open", Int64.Type}, {"avg_balance", type number}, {"customer_transactions", Int64.Type}, {"avg_loan_outstanding", type number}, {"annual_value", type number}, {"annualised_value", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

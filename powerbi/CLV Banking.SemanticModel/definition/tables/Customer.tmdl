@@ -1,0 +1,254 @@
+/// One row per customer (account owner) with current state, value and base-case CLV.
+table Customer
+	lineageTag: 97e0a04e-c712-5977-b7ed-658be7f5d380
+
+	column 'Customer ID'
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: dd5b5ec5-07b4-522d-ac85-004a6e7225e6
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = User
+
+	column Gender
+		dataType: string
+		lineageTag: f1745e51-13cf-5739-98ab-8b95c045a16f
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = User
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e3dcad5-6696-5120-8b2a-f599b5136393
+		summarizeBy: none
+		sourceColumn: age
+
+		annotation SummarizationSetBy = User
+
+	column 'Age band'
+		dataType: string
+		lineageTag: 3dd54b0e-a434-5530-8e14-3a086fed3c7f
+		summarizeBy: none
+		sourceColumn: age_band
+		sortByColumn: 'Age band ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'Age band ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6c48afae-ec48-5978-952a-75f81df3a841
+		summarizeBy: none
+		sourceColumn: age_band_id
+
+		annotation SummarizationSetBy = User
+
+	column Region
+		dataType: string
+		lineageTag: 3f9ab1d7-c83c-5170-892a-89599fc6b410
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = User
+
+	column District
+		dataType: string
+		lineageTag: 78896e53-6405-5d6e-8be2-4e2d10041a54
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = User
+
+	column 'District average salary'
+		dataType: int64
+		formatString: #,0
+		lineageTag: fbf22133-d398-5532-ad1e-c80ca61c3e43
+		summarizeBy: none
+		sourceColumn: district_avg_salary
+
+		annotation SummarizationSetBy = User
+
+	column 'Open date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e725f465-1259-555f-a6ca-16ec3223384b
+		summarizeBy: none
+		sourceColumn: open_date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Open year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e7f1113-b632-5ff1-adab-b5ff4fcc0b5b
+		summarizeBy: none
+		sourceColumn: open_year
+
+		annotation SummarizationSetBy = User
+
+	column 'Tenure years'
+		dataType: double
+		formatString: 0.0
+		lineageTag: d780209f-87a6-5735-8aa1-671a48d2499c
+		summarizeBy: none
+		sourceColumn: tenure_years
+
+		annotation SummarizationSetBy = User
+
+	column 'Statement frequency'
+		dataType: string
+		lineageTag: 16e19595-8ae0-5498-b0d0-6c302aca70cb
+		summarizeBy: none
+		sourceColumn: statement_frequency
+
+		annotation SummarizationSetBy = User
+
+	column 'Has second user'
+		dataType: string
+		lineageTag: 62c2cda6-8ee5-588a-8844-564874822c6f
+		summarizeBy: none
+		sourceColumn: has_second_user
+
+		annotation SummarizationSetBy = User
+
+	column 'Standing orders'
+		dataType: int64
+		formatString: 0
+		lineageTag: 933b08f5-412b-5c46-8292-f540e6e3eddd
+		summarizeBy: none
+		sourceColumn: standing_orders
+
+		annotation SummarizationSetBy = User
+
+	column 'Has loan'
+		dataType: string
+		lineageTag: 872956f4-3716-5d3f-989c-7ee07ceec43b
+		summarizeBy: none
+		sourceColumn: has_loan
+
+		annotation SummarizationSetBy = User
+
+	column 'Loan status'
+		dataType: string
+		lineageTag: 80552e71-91b8-55bc-8a94-0835d88c2808
+		summarizeBy: none
+		sourceColumn: loan_status
+
+		annotation SummarizationSetBy = User
+
+	column Card
+		dataType: string
+		lineageTag: 0c21a654-0c11-541c-ba6a-542c5f410ac4
+		summarizeBy: none
+		sourceColumn: card
+
+		annotation SummarizationSetBy = User
+
+	column 'Product holding'
+		dataType: string
+		lineageTag: 36ef3be5-49d6-5a2d-8298-5759164cbb2b
+		summarizeBy: none
+		sourceColumn: product_holding
+
+		annotation SummarizationSetBy = User
+
+	column 'Current state'
+		dataType: string
+		lineageTag: 416a57f6-595e-5681-8272-1172b50fb4a1
+		summarizeBy: none
+		sourceColumn: current_state
+		sortByColumn: 'Current state ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'Current state ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1163bd8a-4405-5578-b20c-4d854a3c7700
+		summarizeBy: none
+		sourceColumn: current_state_id
+
+		annotation SummarizationSetBy = User
+
+	column 'Current balance'
+		dataType: double
+		formatString: #,0
+		lineageTag: 12820c32-ba52-580c-b8da-dd9b3ec75681
+		summarizeBy: none
+		sourceColumn: current_balance
+
+		annotation SummarizationSetBy = User
+
+	column 'Current value'
+		dataType: double
+		formatString: #,0
+		lineageTag: 050a33d4-97f5-5262-a0fb-8ba0113d5971
+		summarizeBy: none
+		sourceColumn: current_value
+
+		annotation SummarizationSetBy = User
+
+	column 'CLV base case'
+		dataType: double
+		formatString: #,0
+		lineageTag: b62479c5-0b06-5b0a-a0b6-3dc96385ef33
+		summarizeBy: none
+		sourceColumn: clv_5y_base
+
+		annotation SummarizationSetBy = User
+
+	column '5-year survival base case'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: c40f1f3e-335b-56b0-a7ff-c0c15f49c785
+		summarizeBy: none
+		sourceColumn: survival_5y_base
+
+		annotation SummarizationSetBy = User
+
+	column 'CLV decile'
+		dataType: int64
+		formatString: 0
+		lineageTag: c4692ccc-2258-527c-9c3e-cdc47b9763df
+		summarizeBy: none
+		sourceColumn: clv_decile
+
+		annotation SummarizationSetBy = User
+
+	column 'Current value decile'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1bf83f46-a3c0-503d-a47b-38b2aa483b99
+		summarizeBy: none
+		sourceColumn: current_value_decile
+
+		annotation SummarizationSetBy = User
+
+	column 'Ranking gap'
+		dataType: string
+		lineageTag: cefe8cb6-4ddd-5fcf-8d64-806ff342abdf
+		summarizeBy: none
+		sourceColumn: ranking_gap
+
+		annotation SummarizationSetBy = User
+
+	partition Customer = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\dim_customer.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"customer_id", Int64.Type}, {"gender", type text}, {"age", Int64.Type}, {"age_band", type text}, {"age_band_id", Int64.Type}, {"region", type text}, {"district", type text}, {"district_avg_salary", Int64.Type}, {"open_date", type date}, {"open_year", Int64.Type}, {"tenure_years", type number}, {"statement_frequency", type text}, {"has_second_user", type text}, {"standing_orders", Int64.Type}, {"has_loan", type text}, {"loan_status", type text}, {"card", type text}, {"product_holding", type text}, {"current_state", type text}, {"current_state_id", Int64.Type}, {"current_balance", type number}, {"current_value", type number}, {"clv_5y_base", type number}, {"survival_5y_base", type number}, {"clv_decile", Int64.Type}, {"current_value_decile", Int64.Type}, {"ranking_gap", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,186 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "backtest_metrics",
+  "position": {
+    "x": 20,
+    "y": 70,
+    "z": 5000,
+    "height": 222,
+    "width": 716.33333333333326,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest Metric"
+                    }
+                  },
+                  "Property": "Predicted year"
+                }
+              },
+              "queryRef": "Backtest Metric.Predicted year",
+              "nativeQueryRef": "Predicted year",
+              "displayName": "Year"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest Metric"
+                    }
+                  },
+                  "Property": "Model"
+                }
+              },
+              "queryRef": "Backtest Metric.Model",
+              "nativeQueryRef": "Model"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest Metric"
+                    }
+                  },
+                  "Property": "Median abs error"
+                }
+              },
+              "queryRef": "Backtest Metric.Median abs error",
+              "nativeQueryRef": "Median abs error",
+              "displayName": "Median error"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest Metric"
+                    }
+                  },
+                  "Property": "Mean abs error"
+                }
+              },
+              "queryRef": "Backtest Metric.Mean abs error",
+              "nativeQueryRef": "Mean abs error",
+              "displayName": "Mean error"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest Metric"
+                    }
+                  },
+                  "Property": "Top-decile precision"
+                }
+              },
+              "queryRef": "Backtest Metric.Top-decile precision",
+              "nativeQueryRef": "Top-decile precision",
+              "displayName": "Top-10% precision"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest Metric"
+                    }
+                  },
+                  "Property": "Separation"
+                }
+              },
+              "queryRef": "Backtest Metric.Separation",
+              "nativeQueryRef": "Separation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Backtest Metric"
+                    }
+                  },
+                  "Property": "Portfolio error"
+                }
+              },
+              "queryRef": "Backtest Metric.Portfolio error",
+              "nativeQueryRef": "Portfolio error",
+              "displayName": "Portfolio error %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Backtest Metric"
+                  }
+                },
+                "Property": "Predicted year"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Out-of-time backtest'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Fitted on transitions to 1996, tested on 1997 and 1998 value. 2,901 customers. Errors in CZK per customer'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,26 @@
+/// Calendar years in the data, 1993-1998.
+table 'Calendar Year'
+	lineageTag: fd70c259-c8b0-5e90-8fc0-0b7e97849e54
+
+	column Year
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 645efb3a-2175-5e6b-9a57-220b87862680
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	partition 'Calendar Year' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\dim_year.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"year", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,172 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "stationarity",
+  "position": {
+    "x": 20,
+    "y": 304,
+    "z": 7000,
+    "height": 404,
+    "width": 425.6,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stationarity"
+                    }
+                  },
+                  "Property": "From state"
+                }
+              },
+              "queryRef": "Stationarity.From state",
+              "nativeQueryRef": "From state",
+              "displayName": "From"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stationarity"
+                    }
+                  },
+                  "Property": "To state"
+                }
+              },
+              "queryRef": "Stationarity.To state",
+              "nativeQueryRef": "To state",
+              "displayName": "To"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stationarity"
+                    }
+                  },
+                  "Property": "Probability early"
+                }
+              },
+              "queryRef": "Stationarity.Probability early",
+              "nativeQueryRef": "Probability early",
+              "displayName": "1993-95"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stationarity"
+                    }
+                  },
+                  "Property": "Probability late"
+                }
+              },
+              "queryRef": "Stationarity.Probability late",
+              "nativeQueryRef": "Probability late",
+              "displayName": "1996-97"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stationarity"
+                    }
+                  },
+                  "Property": "Shift"
+                }
+              },
+              "queryRef": "Stationarity.Shift",
+              "nativeQueryRef": "Shift"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Stationarity"
+                    }
+                  },
+                  "Property": "Chi-square contribution"
+                }
+              },
+              "queryRef": "Stationarity.Chi-square contribution",
+              "nativeQueryRef": "Chi-square contribution",
+              "displayName": "Chi-sq."
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Stationarity"
+                  }
+                },
+                "Property": "From state"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Stationarity check'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Transition probabilities early against late. A row total above 7.81 rejects stability at 5%'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

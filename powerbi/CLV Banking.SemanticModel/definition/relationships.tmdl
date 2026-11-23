@@ -1,0 +1,44 @@
+relationship 2e274068-5949-5c5f-9d8c-9aa3a3dbec26
+	fromColumn: 'Customer Year'.'Customer ID'
+	toColumn: Customer.'Customer ID'
+
+relationship bb91f881-3d94-58d9-aba4-5d637f562543
+	fromColumn: 'Customer Year'.Year
+	toColumn: 'Calendar Year'.Year
+
+relationship f58e053b-4f04-55fe-8d3e-9ed655258f5f
+	fromColumn: 'Customer Year'.'State ID'
+	toColumn: State.'State ID'
+
+relationship b9f53f06-1466-5d96-996c-616b7602a3a5
+	fromColumn: 'Value Component'.'Customer ID'
+	toColumn: Customer.'Customer ID'
+
+relationship 58b36761-9a7e-5da7-868f-8a79f8b0855a
+	fromColumn: 'Value Component'.Year
+	toColumn: 'Calendar Year'.Year
+
+relationship b4dc72d4-edf8-56fc-9709-c34315429d91
+	fromColumn: 'CLV Projection'.'Customer ID'
+	toColumn: Customer.'Customer ID'
+
+relationship 3a17a039-3185-5359-87b4-9a90a27eff09
+	fromColumn: 'CLV Projection'.'Scenario ID'
+	toColumn: Scenario.'Scenario ID'
+
+relationship b62c5707-af17-590c-9b49-59a3c3287e9a
+	fromColumn: 'State Projection'.'Customer ID'
+	toColumn: Customer.'Customer ID'
+
+relationship 628525a4-97d1-5135-99a3-e815932b44c7
+	fromColumn: 'State Projection'.'Scenario ID'
+	toColumn: Scenario.'Scenario ID'
+
+relationship e9097563-a21b-5334-a084-feb7df2d5459
+	fromColumn: 'State Projection'.'State ID'
+	toColumn: State.'State ID'
+
+relationship 4b59198b-3a02-5089-b0c2-0ea35473fa8c
+	fromColumn: 'Transition Matrix'.'Scenario ID'
+	toColumn: Scenario.'Scenario ID'
+

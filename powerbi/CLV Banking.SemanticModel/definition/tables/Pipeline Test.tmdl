@@ -1,0 +1,58 @@
+/// Result of each automated pipeline test.
+table 'Pipeline Test'
+	lineageTag: f69a0ff1-975a-560a-aa3e-94682967dfcd
+
+	column 'Test ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 80eea00b-1ce6-5c9f-b5c3-34a2055cb1d9
+		summarizeBy: none
+		sourceColumn: test_id
+
+		annotation SummarizationSetBy = User
+
+	column Layer
+		dataType: string
+		lineageTag: 260ddf31-3847-53e5-ba12-f773ad518bb6
+		summarizeBy: none
+		sourceColumn: layer
+
+		annotation SummarizationSetBy = User
+
+	column Test
+		dataType: string
+		lineageTag: 69356bc4-f709-551f-8be6-dae418a52482
+		summarizeBy: none
+		sourceColumn: test
+
+		annotation SummarizationSetBy = User
+
+	column Failures
+		dataType: int64
+		formatString: 0
+		lineageTag: 197bf2e9-69b3-506b-959f-2eed4c7c47ca
+		summarizeBy: none
+		sourceColumn: failures
+
+		annotation SummarizationSetBy = User
+
+	column Result
+		dataType: string
+		lineageTag: 96cc0751-4a4b-5f14-9c50-d1ff07e19231
+		summarizeBy: none
+		sourceColumn: result
+
+		annotation SummarizationSetBy = User
+
+	partition 'Pipeline Test' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\test_result.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"test_id", Int64.Type}, {"layer", type text}, {"test", type text}, {"failures", Int64.Type}, {"result", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

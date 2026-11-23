@@ -1,0 +1,11 @@
+/// Folder that holds this project. Change it once here if the project moves.
+expression ProjectFolder =
+		"C:\Users\USER\Documents\Projects\clv-banking" meta [
+			IsParameterQuery = true,
+			Type = "Text",
+			IsParameterQueryRequired = true
+		]
+	lineageTag: 86c12d83-9159-5c46-b268-613c5f6da99b
+
+	annotation PBI_ResultType = Text
+

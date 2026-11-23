@@ -1,0 +1,96 @@
+/// Out-of-time backtest: fitted on transitions to 1996, tested on 1997 and 1998.
+table 'Backtest Metric'
+	lineageTag: 8e444db2-0343-50dc-bd76-28e108493455
+
+	column Model
+		dataType: string
+		lineageTag: f1a39059-7f32-5cc2-961e-b92c52f4cd94
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = User
+
+	column 'Years ahead'
+		dataType: int64
+		formatString: 0
+		lineageTag: ee09b6f6-cf6a-50a7-9c3d-48d401d2b656
+		summarizeBy: none
+		sourceColumn: horizon_year
+
+		annotation SummarizationSetBy = User
+
+	column 'Predicted year'
+		dataType: int64
+		formatString: 0
+		lineageTag: b7567050-5a26-59a1-aad8-c14b371fc36e
+		summarizeBy: none
+		sourceColumn: predicted_year
+
+		annotation SummarizationSetBy = User
+
+	column 'Customers tested'
+		dataType: int64
+		formatString: #,0
+		lineageTag: b39172f8-d9f4-51c9-9321-fd3f221ef057
+		summarizeBy: none
+		sourceColumn: customers
+
+		annotation SummarizationSetBy = User
+
+	column 'Median abs error'
+		dataType: double
+		formatString: #,0
+		lineageTag: 3a004ed9-944c-5064-bfe5-0e527fe4e316
+		summarizeBy: none
+		sourceColumn: median_abs_error
+
+		annotation SummarizationSetBy = User
+
+	column 'Mean abs error'
+		dataType: double
+		formatString: #,0
+		lineageTag: 0cbae529-5bb1-575c-b478-06b2efbf4a90
+		summarizeBy: none
+		sourceColumn: mean_abs_error
+
+		annotation SummarizationSetBy = User
+
+	column 'Top-decile precision'
+		dataType: double
+		formatString: 0%
+		lineageTag: a9cf77ab-5054-51f8-a0a9-1f4dd561cc4a
+		summarizeBy: none
+		sourceColumn: top_decile_precision
+
+		annotation SummarizationSetBy = User
+
+	column Separation
+		dataType: double
+		formatString: #,0
+		lineageTag: 537f8949-5d00-5360-84d9-7bd126258788
+		summarizeBy: none
+		sourceColumn: separation_czk
+
+		annotation SummarizationSetBy = User
+
+	column 'Portfolio error'
+		dataType: double
+		formatString: 0.0
+		lineageTag: db687675-b3ea-5f87-a69f-d8ccec3e6b9a
+		summarizeBy: none
+		sourceColumn: portfolio_error_pct
+
+		annotation SummarizationSetBy = User
+
+	partition 'Backtest Metric' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\backtest_metric.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"model", type text}, {"horizon_year", Int64.Type}, {"predicted_year", Int64.Type}, {"customers", Int64.Type}, {"median_abs_error", type number}, {"mean_abs_error", type number}, {"top_decile_precision", type number}, {"separation_czk", type number}, {"portfolio_error_pct", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

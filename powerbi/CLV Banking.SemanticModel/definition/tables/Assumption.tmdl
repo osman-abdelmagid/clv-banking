@@ -1,0 +1,57 @@
+/// Every modelling assumption, with its basis.
+table Assumption
+	lineageTag: 97d95c44-9d76-5791-94a2-91abae88b018
+
+	column Assumption
+		dataType: string
+		lineageTag: be70f386-1d60-5f18-9568-9e4a1826ba08
+		summarizeBy: none
+		sourceColumn: assumption
+
+		annotation SummarizationSetBy = User
+
+	column Value
+		dataType: double
+		formatString: #,0.####
+		lineageTag: beebffb2-f79f-50de-9ef9-46d53ab94c38
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = User
+
+	column Unit
+		dataType: string
+		lineageTag: 189fd268-aa40-5588-a409-3af3bc8a4efd
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = User
+
+	column Source
+		dataType: string
+		lineageTag: b1e2f97a-64c6-5c8f-ba19-ccc55ac40e29
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = User
+
+	column Basis
+		dataType: string
+		lineageTag: 43d156f0-1eee-5e40-8b96-33068372b622
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = User
+
+	partition Assumption = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\assumption.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"assumption", type text}, {"value", type number}, {"unit", type text}, {"source", type text}, {"basis", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,64 @@
+/// Projection: probability of each state per customer, scenario and year ahead.
+table 'State Projection'
+	lineageTag: 278025ff-502e-5ea3-852f-e367c1696721
+
+	column 'Scenario ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7a3c6d69-4580-5772-9485-248475e5fca4
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = User
+
+	column 'Customer ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 85741658-9072-5037-8c73-fd1416604eba
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = User
+
+	column 'Years ahead'
+		dataType: int64
+		formatString: 0
+		lineageTag: c7f975c6-0650-5df5-893f-3bce01aefa08
+		summarizeBy: none
+		sourceColumn: horizon_year
+
+		annotation SummarizationSetBy = User
+
+	column 'State ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 41dc4173-60df-5f08-b345-32b9f3aa754f
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = User
+
+	column Probability
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 22b8d95a-d36b-5e87-9fa4-a0251f0335f7
+		summarizeBy: none
+		sourceColumn: probability
+
+		annotation SummarizationSetBy = User
+
+	partition 'State Projection' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\fact_state_projection.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"scenario_id", Int64.Type}, {"customer_id", Int64.Type}, {"horizon_year", Int64.Type}, {"state_id", Int64.Type}, {"probability", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,142 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "matrix_support",
+  "position": {
+    "x": 854.66666666666663,
+    "y": 492,
+    "z": 15000,
+    "height": 216,
+    "width": 405.33333333333331,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transition Matrix"
+                    }
+                  },
+                  "Property": "Matrix age band"
+                }
+              },
+              "queryRef": "Transition Matrix.Matrix age band",
+              "nativeQueryRef": "Matrix age band",
+              "displayName": "Age band"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transition Matrix"
+                    }
+                  },
+                  "Property": "From state"
+                }
+              },
+              "queryRef": "Transition Matrix.From state",
+              "nativeQueryRef": "From state"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transition Matrix"
+                    }
+                  },
+                  "Property": "Observed transitions from"
+                }
+              },
+              "queryRef": "Transition Matrix.Observed transitions from",
+              "nativeQueryRef": "Observed transitions from",
+              "displayName": "Observed"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Transition Matrix"
+                    }
+                  },
+                  "Property": "Estimate source"
+                }
+              },
+              "queryRef": "Transition Matrix.Estimate source",
+              "nativeQueryRef": "Estimate source",
+              "displayName": "Estimate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Transition Matrix"
+                  }
+                },
+                "Property": "Matrix age band"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Evidence behind each matrix row'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Rows with under 150 observations use the pooled estimate'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,63 @@
+/// Projection: expected value per customer, scenario and year ahead (undiscounted).
+table 'CLV Projection'
+	lineageTag: 5c795e96-75f9-5a75-9b95-3670fa4a1128
+
+	column 'Scenario ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6fdd20ee-3ccd-5515-96a8-2a78e49c5456
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = User
+
+	column 'Customer ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: db4160d1-0ccc-5afc-bf71-6c0bdbdb1fe8
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = User
+
+	column 'Years ahead'
+		dataType: int64
+		formatString: 0
+		lineageTag: 656dcb66-ae82-5a99-959b-989f10311335
+		summarizeBy: none
+		sourceColumn: horizon_year
+
+		annotation SummarizationSetBy = User
+
+	column 'Expected value'
+		dataType: double
+		formatString: #,0
+		lineageTag: ff5f262e-c25e-5e63-8ce8-d02962624bc7
+		summarizeBy: none
+		sourceColumn: expected_value
+
+		annotation SummarizationSetBy = User
+
+	column 'Survival probability'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 6f5fb5fd-5421-57f9-9c26-06456cf78410
+		summarizeBy: none
+		sourceColumn: survival_probability
+
+		annotation SummarizationSetBy = User
+
+	partition 'CLV Projection' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\fact_clv_projection.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"scenario_id", Int64.Type}, {"customer_id", Int64.Type}, {"horizon_year", Int64.Type}, {"expected_value", type number}, {"survival_probability", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

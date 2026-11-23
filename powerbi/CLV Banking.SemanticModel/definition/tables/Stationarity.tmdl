@@ -1,0 +1,108 @@
+/// Early (1993-95) against late (1996-97) transition probabilities.
+table Stationarity
+	lineageTag: 4e02a102-8cc4-510c-9af2-c624f96fe847
+
+	column 'From state ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fd3f02e1-cd6d-51ab-b725-c1327c5823a2
+		summarizeBy: none
+		sourceColumn: from_state_id
+
+		annotation SummarizationSetBy = User
+
+	column 'From state'
+		dataType: string
+		lineageTag: 37cc0507-d5f4-5429-a1fe-9ae498bca2de
+		summarizeBy: none
+		sourceColumn: from_state
+		sortByColumn: 'From state ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'To state ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7912f4bd-86f0-58fd-af04-fc055005be9b
+		summarizeBy: none
+		sourceColumn: to_state_id
+
+		annotation SummarizationSetBy = User
+
+	column 'To state'
+		dataType: string
+		lineageTag: 1c161092-f38a-5047-8e46-bede60cc8f86
+		summarizeBy: none
+		sourceColumn: to_state
+		sortByColumn: 'To state ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'Transitions early'
+		dataType: int64
+		formatString: #,0
+		lineageTag: db9bfa87-b5f7-5990-ab0c-352eaaf98658
+		summarizeBy: none
+		sourceColumn: n_early
+
+		annotation SummarizationSetBy = User
+
+	column 'Transitions late'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 06ca843e-9b4d-50db-a8f6-8770c6f15edb
+		summarizeBy: none
+		sourceColumn: n_late
+
+		annotation SummarizationSetBy = User
+
+	column 'Probability early'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 0545c561-2ef4-5aee-aec2-2fda8dab5693
+		summarizeBy: none
+		sourceColumn: p_early
+
+		annotation SummarizationSetBy = User
+
+	column 'Probability late'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 0856790a-a0f3-583b-b8c1-34c484c859f1
+		summarizeBy: none
+		sourceColumn: p_late
+
+		annotation SummarizationSetBy = User
+
+	column Shift
+		dataType: double
+		formatString: +0.0%;-0.0%;0.0%
+		lineageTag: d84af6b0-9a31-58d1-aadd-5d6088df27d1
+		summarizeBy: none
+		sourceColumn: p_shift
+
+		annotation SummarizationSetBy = User
+
+	column 'Chi-square contribution'
+		dataType: double
+		formatString: 0.0
+		lineageTag: 9e396cb5-5ab7-5545-b4da-f314d3e66764
+		summarizeBy: none
+		sourceColumn: chi_square_contribution
+
+		annotation SummarizationSetBy = User
+
+	partition Stationarity = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\stationarity.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"from_state_id", Int64.Type}, {"from_state", type text}, {"to_state_id", Int64.Type}, {"to_state", type text}, {"n_early", Int64.Type}, {"n_late", Int64.Type}, {"p_early", type number}, {"p_late", type number}, {"p_shift", type number}, {"chi_square_contribution", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

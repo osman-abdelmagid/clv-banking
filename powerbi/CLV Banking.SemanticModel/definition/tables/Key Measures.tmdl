@@ -1,0 +1,239 @@
+/// All report measures live here. Folders group them by report page.
+table 'Key Measures'
+	lineageTag: bea82e62-9778-53ea-8899-7978f092510e
+
+	/// Customers in the current filter context.
+	measure Customers = COUNTROWS ( Customer )
+		formatString: #,0
+		displayFolder: 1 Portfolio
+		lineageTag: 0557c727-6867-51c6-bd02-3ff84d223e37
+
+	/// Scenario picked in the slicer. Falls back to the Base case (3).
+	measure 'Selected scenario ID' = SELECTEDVALUE ( Scenario[Scenario ID], 3 )
+		formatString: 0
+		displayFolder: 0 Selections
+		lineageTag: af2d6e36-195d-58fd-b6e0-cb9238125842
+
+	/// Discount rate picked in the slicer. Falls back to 10%.
+	measure 'Selected discount rate' = SELECTEDVALUE ( 'Discount Rate'[Discount rate], 0.10 )
+		formatString: 0%
+		displayFolder: 0 Selections
+		lineageTag: 32d35449-1bdf-5e7f-bb2b-94ff2b676901
+
+	/// Five-year customer lifetime value: expected value per year, discounted at the selected rate, for the selected attrition scenario.
+	measure CLV =
+			VAR r = [Selected discount rate]
+			VAR s = [Selected scenario ID]
+			RETURN
+			    CALCULATE (
+			        SUMX (
+			            'CLV Projection',
+			            DIVIDE ( 'CLV Projection'[Expected value], POWER ( 1 + r, 'CLV Projection'[Years ahead] ) )
+			        ),
+			        'CLV Projection'[Scenario ID] = s
+			    )
+		formatString: #,0
+		displayFolder: 1 Portfolio
+		lineageTag: e2f838c1-f134-5210-ab14-dbdc72854c5d
+
+	/// CLV per customer.
+	measure 'Average CLV' = DIVIDE ( [CLV], [Customers] )
+		formatString: #,0
+		displayFolder: 1 Portfolio
+		lineageTag: 9f0d544e-1297-56ba-81ee-bfabfc07fb63
+
+	/// Value earned in 1998, the last observed year.
+	measure 'Current annual value' = SUM ( Customer[Current value] )
+		formatString: #,0
+		displayFolder: 1 Portfolio
+		lineageTag: 3fd8b918-fba7-5fba-8b4b-a3215f112c6a
+
+	/// 1998 value per customer.
+	measure 'Average current value' = DIVIDE ( [Current annual value], [Customers] )
+		formatString: #,0
+		displayFolder: 1 Portfolio
+		lineageTag: 78b9c11f-458a-5cb7-b310-7c08e9281925
+
+	/// Five-year CLV as a multiple of this year's value.
+	measure 'CLV multiple' = DIVIDE ( [CLV], [Current annual value] )
+		formatString: 0.0"x"
+		displayFolder: 1 Portfolio
+		lineageTag: ce36d6b7-44a3-5c05-8d69-e457be819abc
+
+	/// Average probability that a customer is still with the bank after five years, for the selected scenario.
+	measure 'Retention after 5 years' =
+			VAR s = [Selected scenario ID]
+			RETURN
+			    CALCULATE (
+			        AVERAGE ( 'CLV Projection'[Survival probability] ),
+			        'CLV Projection'[Scenario ID] = s,
+			        'CLV Projection'[Years ahead] = 5
+			    )
+		formatString: 0.0%
+		displayFolder: 1 Portfolio
+		lineageTag: 9dadd972-d246-5063-bd11-de098a77f74b
+
+	/// Share of CLV held by the two highest CLV deciles.
+	measure 'Top 20% share of CLV' = DIVIDE ( CALCULATE ( [CLV], Customer[CLV decile] <= 2 ), [CLV] )
+		formatString: 0.0%
+		displayFolder: 1 Portfolio
+		lineageTag: 287406f7-a46e-5106-820f-6430451ecadb
+
+	/// CLV without the scenario default, for charts that compare scenarios side by side.
+	measure 'CLV all scenarios' =
+			VAR r = [Selected discount rate]
+			RETURN
+			    SUMX (
+			        'CLV Projection',
+			        DIVIDE ( 'CLV Projection'[Expected value], POWER ( 1 + r, 'CLV Projection'[Years ahead] ) )
+			    )
+		formatString: #,0
+		displayFolder: 2 Projection
+		lineageTag: d2f2839e-288d-58d0-9602-793c05a3d7ac
+
+	/// Average survival probability, for charts that compare scenarios side by side.
+	measure 'Retention all scenarios' = AVERAGE ( 'CLV Projection'[Survival probability] )
+		formatString: 0.0%
+		displayFolder: 2 Projection
+		lineageTag: bed1cb97-d8b8-506d-9dd2-dc38ffc1902b
+
+	/// Expected number of customers in each state, for the selected scenario.
+	measure 'Expected customers' =
+			VAR s = [Selected scenario ID]
+			RETURN
+			    CALCULATE ( SUM ( 'State Projection'[Probability] ), 'State Projection'[Scenario ID] = s )
+		formatString: #,0
+		displayFolder: 2 Projection
+		lineageTag: d19b56f4-4de5-5254-a2f5-ff994c76d0f3
+
+	/// Annual probability of moving from one state to another, for the selected scenario and matrix age band (All ages by default).
+	measure 'Transition probability' =
+			VAR s = [Selected scenario ID]
+			VAR b = SELECTEDVALUE ( 'Transition Matrix'[Matrix age band], "All ages" )
+			RETURN
+			    CALCULATE (
+			        SUM ( 'Transition Matrix'[Probability] ),
+			        'Transition Matrix'[Scenario ID] = s,
+			        'Transition Matrix'[Matrix age band] = b
+			    )
+		formatString: 0.0%
+		displayFolder: 2 Projection
+		lineageTag: 05182592-32ec-5668-acaa-00ac19cf0594
+
+	/// Background colour for the transition matrix heat map.
+	measure 'Transition cell colour' =
+			VAR p = [Transition probability]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( p ), "#FFFFFF",
+			        p >= 0.60, "#0B1F3A",
+			        p >= 0.30, "#2F5D8A",
+			        p >= 0.10, "#8FB3D1",
+			        p >= 0.02, "#DCE7F1",
+			        "#F6F8FB"
+			    )
+		displayFolder: 9 Formatting
+		lineageTag: 4ae1f88e-9882-5cd2-a752-df8bb8c5fdc8
+
+	/// Font colour for the transition matrix heat map.
+	measure 'Transition font colour' = IF ( [Transition probability] >= 0.30, "#FFFFFF", "#1B2433" )
+		displayFolder: 9 Formatting
+		lineageTag: bce534e1-6052-5469-bd97-87ffda54219f
+
+	/// Customers classified into a state in the year.
+	measure 'Customers with a state' = CALCULATE ( COUNTROWS ( 'Customer Year' ), NOT ISBLANK ( 'Customer Year'[State ID] ) )
+		formatString: #,0
+		displayFolder: 3 History
+		lineageTag: 5d8b0538-1bc8-5b9f-9a23-2be4e27531cd
+
+	/// Observed annual value, 1993-1998.
+	measure 'Annual value' = SUM ( 'Customer Year'[Annual value] )
+		formatString: #,0
+		displayFolder: 3 History
+		lineageTag: b154caa8-fd23-560c-aea2-c4f9198da822
+
+	/// Observed value by component, 1993-1998.
+	measure 'Value component amount' = SUM ( 'Value Component'[Amount] )
+		formatString: #,0
+		displayFolder: 3 History
+		lineageTag: d6822577-62f0-58e0-a723-e14349fc9b13
+
+	/// Average 1998 value per customer by component.
+	measure 'Value component per customer 1998' = DIVIDE ( CALCULATE ( SUM ( 'Value Component'[Amount] ), 'Calendar Year'[Year] = 1998 ), [Customers] )
+		formatString: #,0
+		displayFolder: 3 History
+		lineageTag: 99d4f5ff-bf1b-5751-818f-25e3b73a9854
+
+	/// Average daily balance per customer in 1998.
+	measure 'Average balance 1998' = AVERAGE ( Customer[Current balance] )
+		formatString: #,0
+		displayFolder: 3 History
+		lineageTag: 6c6a0f50-b35b-540d-97b6-7f0607bbf3da
+
+	/// Customers in the top 20% by CLV who are outside the top 20% by current value.
+	measure 'Under-rated customers' = CALCULATE ( [Customers], Customer[Ranking gap] = "Under-rated today" )
+		formatString: #,0
+		displayFolder: 4 Actions
+		lineageTag: 38f620dd-4c7a-5acd-8f03-0efb1f5ab746
+
+	/// CLV held by under-rated customers.
+	measure 'Under-rated CLV' = CALCULATE ( [CLV], Customer[Ranking gap] = "Under-rated today" )
+		formatString: #,0
+		displayFolder: 4 Actions
+		lineageTag: c45f67e1-bf83-5e1b-b3c3-01e540dd4438
+
+	/// Customers in the top 20% by current value who are outside the top 20% by CLV.
+	measure 'Over-rated customers' = CALCULATE ( [Customers], Customer[Ranking gap] = "Over-rated today" )
+		formatString: #,0
+		displayFolder: 4 Actions
+		lineageTag: 6403e0d9-e9c6-560b-9a82-e993069e9448
+
+	/// Customers per state predicted for 1998 from 1996 states (age-banded chain).
+	measure 'Backtest predicted customers' =
+			CALCULATE (
+			    SUM ( 'Backtest State'[Predicted customers] ),
+			    'Backtest State'[Chain] = "Age-banded",
+			    'Backtest State'[Year] = 1998
+			)
+		formatString: #,0
+		displayFolder: 5 Validation
+		lineageTag: 77e90975-e997-5813-83b3-f563699e45f5
+
+	/// Customers per state actually observed in 1998.
+	measure 'Backtest actual customers' =
+			CALCULATE (
+			    SUM ( 'Backtest State'[Actual customers] ),
+			    'Backtest State'[Chain] = "Age-banded",
+			    'Backtest State'[Year] = 1998
+			)
+		formatString: #,0
+		displayFolder: 5 Validation
+		lineageTag: 41b84f7a-7b8a-5a93-8cb5-bc2fb3397e6f
+
+	/// Automated pipeline tests passed, as text.
+	measure 'Pipeline tests passed' =
+			COUNTROWS ( FILTER ( 'Pipeline Test', 'Pipeline Test'[Result] = "Pass" ) )
+			    & " of " & COUNTROWS ( 'Pipeline Test' )
+		displayFolder: 5 Validation
+		lineageTag: 3003cdae-6eaf-5b04-8f3d-ed880bd96f95
+
+	column Placeholder
+		dataType: string
+		isHidden
+		lineageTag: b9f8d711-4885-5033-ba2f-bb63cde3ec2f
+		summarizeBy: none
+		sourceColumn: Placeholder
+
+		annotation SummarizationSetBy = User
+
+	partition 'Key Measures' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Placeholder = text], {{"measures"}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

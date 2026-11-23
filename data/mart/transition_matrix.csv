@@ -1,0 +1,321 @@
+scenario_id,age_band_id,age_band,from_state_id,from_state,to_state_id,to_state,probability,observed_transitions_from,estimate_source
+1,0,All ages,1,High value,1,High value,0.84044,2933,Own data
+1,0,All ages,1,High value,2,Mid value,0.12956,2933,Own data
+1,0,All ages,1,High value,3,Low value,0.01977,2933,Own data
+1,0,All ages,1,High value,4,Passive,0.01023,2933,Own data
+1,0,All ages,1,High value,5,Churned,0.00000,2933,Own data
+1,0,All ages,2,Mid value,1,High value,0.27800,3518,Own data
+1,0,All ages,2,Mid value,2,Mid value,0.53070,3518,Own data
+1,0,All ages,2,Mid value,3,Low value,0.17936,3518,Own data
+1,0,All ages,2,Mid value,4,Passive,0.01194,3518,Own data
+1,0,All ages,2,Mid value,5,Churned,0.00000,3518,Own data
+1,0,All ages,3,Low value,1,High value,0.04265,3634,Own data
+1,0,All ages,3,Low value,2,Mid value,0.18712,3634,Own data
+1,0,All ages,3,Low value,3,Low value,0.71822,3634,Own data
+1,0,All ages,3,Low value,4,Passive,0.05201,3634,Own data
+1,0,All ages,3,Low value,5,Churned,0.00000,3634,Own data
+1,0,All ages,4,Passive,1,High value,0.04312,719,Own data
+1,0,All ages,4,Passive,2,Mid value,0.11822,719,Own data
+1,0,All ages,4,Passive,3,Low value,0.42420,719,Own data
+1,0,All ages,4,Passive,4,Passive,0.40195,719,Own data
+1,0,All ages,4,Passive,5,Churned,0.01252,719,Own data
+1,1,Under 30,1,High value,1,High value,0.83518,904,Own data
+1,1,Under 30,1,High value,2,Mid value,0.13164,904,Own data
+1,1,Under 30,1,High value,3,Low value,0.01991,904,Own data
+1,1,Under 30,1,High value,4,Passive,0.01327,904,Own data
+1,1,Under 30,1,High value,5,Churned,0.00000,904,Own data
+1,1,Under 30,2,Mid value,1,High value,0.27032,1132,Own data
+1,1,Under 30,2,Mid value,2,Mid value,0.54859,1132,Own data
+1,1,Under 30,2,Mid value,3,Low value,0.17314,1132,Own data
+1,1,Under 30,2,Mid value,4,Passive,0.00795,1132,Own data
+1,1,Under 30,2,Mid value,5,Churned,0.00000,1132,Own data
+1,1,Under 30,3,Low value,1,High value,0.04803,1041,Own data
+1,1,Under 30,3,Low value,2,Mid value,0.23247,1041,Own data
+1,1,Under 30,3,Low value,3,Low value,0.70605,1041,Own data
+1,1,Under 30,3,Low value,4,Passive,0.01345,1041,Own data
+1,1,Under 30,3,Low value,5,Churned,0.00000,1041,Own data
+1,1,Under 30,4,Passive,1,High value,0.04312,43,Pooled fallback
+1,1,Under 30,4,Passive,2,Mid value,0.11822,43,Pooled fallback
+1,1,Under 30,4,Passive,3,Low value,0.42420,43,Pooled fallback
+1,1,Under 30,4,Passive,4,Passive,0.40195,43,Pooled fallback
+1,1,Under 30,4,Passive,5,Churned,0.01252,43,Pooled fallback
+1,2,30 to 59,1,High value,1,High value,0.84047,1937,Own data
+1,2,30 to 59,1,High value,2,Mid value,0.13268,1937,Own data
+1,2,30 to 59,1,High value,3,Low value,0.01910,1937,Own data
+1,2,30 to 59,1,High value,4,Passive,0.00774,1937,Own data
+1,2,30 to 59,1,High value,5,Churned,0.00000,1937,Own data
+1,2,30 to 59,2,Mid value,1,High value,0.30951,2029,Own data
+1,2,30 to 59,2,Mid value,2,Mid value,0.52193,2029,Own data
+1,2,30 to 59,2,Mid value,3,Low value,0.15919,2029,Own data
+1,2,30 to 59,2,Mid value,4,Passive,0.00936,2029,Own data
+1,2,30 to 59,2,Mid value,5,Churned,0.00000,2029,Own data
+1,2,30 to 59,3,Low value,1,High value,0.05752,1756,Own data
+1,2,30 to 59,3,Low value,2,Mid value,0.19932,1756,Own data
+1,2,30 to 59,3,Low value,3,Low value,0.73178,1756,Own data
+1,2,30 to 59,3,Low value,4,Passive,0.01139,1756,Own data
+1,2,30 to 59,3,Low value,5,Churned,0.00000,1756,Own data
+1,2,30 to 59,4,Passive,1,High value,0.04312,93,Pooled fallback
+1,2,30 to 59,4,Passive,2,Mid value,0.11822,93,Pooled fallback
+1,2,30 to 59,4,Passive,3,Low value,0.42420,93,Pooled fallback
+1,2,30 to 59,4,Passive,4,Passive,0.40195,93,Pooled fallback
+1,2,30 to 59,4,Passive,5,Churned,0.01252,93,Pooled fallback
+1,3,60 plus,1,High value,1,High value,0.84044,92,Pooled fallback
+1,3,60 plus,1,High value,2,Mid value,0.12956,92,Pooled fallback
+1,3,60 plus,1,High value,3,Low value,0.01977,92,Pooled fallback
+1,3,60 plus,1,High value,4,Passive,0.01023,92,Pooled fallback
+1,3,60 plus,1,High value,5,Churned,0.00000,92,Pooled fallback
+1,3,60 plus,2,Mid value,1,High value,0.12325,357,Own data
+1,3,60 plus,2,Mid value,2,Mid value,0.52381,357,Own data
+1,3,60 plus,2,Mid value,3,Low value,0.31373,357,Own data
+1,3,60 plus,2,Mid value,4,Passive,0.03922,357,Own data
+1,3,60 plus,2,Mid value,5,Churned,0.00000,357,Own data
+1,3,60 plus,3,Low value,1,High value,0.00478,837,Own data
+1,3,60 plus,3,Low value,2,Mid value,0.10514,837,Own data
+1,3,60 plus,3,Low value,3,Low value,0.70490,837,Own data
+1,3,60 plus,3,Low value,4,Passive,0.18519,837,Own data
+1,3,60 plus,3,Low value,5,Churned,0.00000,837,Own data
+1,3,60 plus,4,Passive,1,High value,0.01029,583,Own data
+1,3,60 plus,4,Passive,2,Mid value,0.10978,583,Own data
+1,3,60 plus,4,Passive,3,Low value,0.48027,583,Own data
+1,3,60 plus,4,Passive,4,Passive,0.39966,583,Own data
+1,3,60 plus,4,Passive,5,Churned,0.00000,583,Own data
+2,0,All ages,1,High value,1,High value,0.82783,2933,Own data
+2,0,All ages,1,High value,2,Mid value,0.12762,2933,Own data
+2,0,All ages,1,High value,3,Low value,0.01948,2933,Own data
+2,0,All ages,1,High value,4,Passive,0.01008,2933,Own data
+2,0,All ages,1,High value,5,Churned,0.01500,2933,Own data
+2,0,All ages,2,Mid value,1,High value,0.27133,3518,Own data
+2,0,All ages,2,Mid value,2,Mid value,0.51796,3518,Own data
+2,0,All ages,2,Mid value,3,Low value,0.17506,3518,Own data
+2,0,All ages,2,Mid value,4,Passive,0.01165,3518,Own data
+2,0,All ages,2,Mid value,5,Churned,0.02400,3518,Own data
+2,0,All ages,3,Low value,1,High value,0.04112,3634,Own data
+2,0,All ages,3,Low value,2,Mid value,0.18039,3634,Own data
+2,0,All ages,3,Low value,3,Low value,0.69236,3634,Own data
+2,0,All ages,3,Low value,4,Passive,0.05014,3634,Own data
+2,0,All ages,3,Low value,5,Churned,0.03600,3634,Own data
+2,0,All ages,4,Passive,1,High value,0.03988,719,Own data
+2,0,All ages,4,Passive,2,Mid value,0.10935,719,Own data
+2,0,All ages,4,Passive,3,Low value,0.39239,719,Own data
+2,0,All ages,4,Passive,4,Passive,0.37180,719,Own data
+2,0,All ages,4,Passive,5,Churned,0.08658,719,Own data
+2,1,Under 30,1,High value,1,High value,0.82265,904,Own data
+2,1,Under 30,1,High value,2,Mid value,0.12966,904,Own data
+2,1,Under 30,1,High value,3,Low value,0.01961,904,Own data
+2,1,Under 30,1,High value,4,Passive,0.01308,904,Own data
+2,1,Under 30,1,High value,5,Churned,0.01500,904,Own data
+2,1,Under 30,2,Mid value,1,High value,0.26383,1132,Own data
+2,1,Under 30,2,Mid value,2,Mid value,0.53542,1132,Own data
+2,1,Under 30,2,Mid value,3,Low value,0.16899,1132,Own data
+2,1,Under 30,2,Mid value,4,Passive,0.00776,1132,Own data
+2,1,Under 30,2,Mid value,5,Churned,0.02400,1132,Own data
+2,1,Under 30,3,Low value,1,High value,0.04630,1041,Own data
+2,1,Under 30,3,Low value,2,Mid value,0.22410,1041,Own data
+2,1,Under 30,3,Low value,3,Low value,0.68063,1041,Own data
+2,1,Under 30,3,Low value,4,Passive,0.01296,1041,Own data
+2,1,Under 30,3,Low value,5,Churned,0.03600,1041,Own data
+2,1,Under 30,4,Passive,1,High value,0.03988,43,Pooled fallback
+2,1,Under 30,4,Passive,2,Mid value,0.10935,43,Pooled fallback
+2,1,Under 30,4,Passive,3,Low value,0.39239,43,Pooled fallback
+2,1,Under 30,4,Passive,4,Passive,0.37180,43,Pooled fallback
+2,1,Under 30,4,Passive,5,Churned,0.08658,43,Pooled fallback
+2,2,30 to 59,1,High value,1,High value,0.82787,1937,Own data
+2,2,30 to 59,1,High value,2,Mid value,0.13069,1937,Own data
+2,2,30 to 59,1,High value,3,Low value,0.01882,1937,Own data
+2,2,30 to 59,1,High value,4,Passive,0.00763,1937,Own data
+2,2,30 to 59,1,High value,5,Churned,0.01500,1937,Own data
+2,2,30 to 59,2,Mid value,1,High value,0.30208,2029,Own data
+2,2,30 to 59,2,Mid value,2,Mid value,0.50941,2029,Own data
+2,2,30 to 59,2,Mid value,3,Low value,0.15537,2029,Own data
+2,2,30 to 59,2,Mid value,4,Passive,0.00914,2029,Own data
+2,2,30 to 59,2,Mid value,5,Churned,0.02400,2029,Own data
+2,2,30 to 59,3,Low value,1,High value,0.05545,1756,Own data
+2,2,30 to 59,3,Low value,2,Mid value,0.19214,1756,Own data
+2,2,30 to 59,3,Low value,3,Low value,0.70543,1756,Own data
+2,2,30 to 59,3,Low value,4,Passive,0.01098,1756,Own data
+2,2,30 to 59,3,Low value,5,Churned,0.03600,1756,Own data
+2,2,30 to 59,4,Passive,1,High value,0.03988,93,Pooled fallback
+2,2,30 to 59,4,Passive,2,Mid value,0.10935,93,Pooled fallback
+2,2,30 to 59,4,Passive,3,Low value,0.39239,93,Pooled fallback
+2,2,30 to 59,4,Passive,4,Passive,0.37180,93,Pooled fallback
+2,2,30 to 59,4,Passive,5,Churned,0.08658,93,Pooled fallback
+2,3,60 plus,1,High value,1,High value,0.82783,92,Pooled fallback
+2,3,60 plus,1,High value,2,Mid value,0.12762,92,Pooled fallback
+2,3,60 plus,1,High value,3,Low value,0.01948,92,Pooled fallback
+2,3,60 plus,1,High value,4,Passive,0.01008,92,Pooled fallback
+2,3,60 plus,1,High value,5,Churned,0.01500,92,Pooled fallback
+2,3,60 plus,2,Mid value,1,High value,0.12029,357,Own data
+2,3,60 plus,2,Mid value,2,Mid value,0.51124,357,Own data
+2,3,60 plus,2,Mid value,3,Low value,0.30620,357,Own data
+2,3,60 plus,2,Mid value,4,Passive,0.03827,357,Own data
+2,3,60 plus,2,Mid value,5,Churned,0.02400,357,Own data
+2,3,60 plus,3,Low value,1,High value,0.00461,837,Own data
+2,3,60 plus,3,Low value,2,Mid value,0.10135,837,Own data
+2,3,60 plus,3,Low value,3,Low value,0.67952,837,Own data
+2,3,60 plus,3,Low value,4,Passive,0.17852,837,Own data
+2,3,60 plus,3,Low value,5,Churned,0.03600,837,Own data
+2,3,60 plus,4,Passive,1,High value,0.00952,583,Own data
+2,3,60 plus,4,Passive,2,Mid value,0.10154,583,Own data
+2,3,60 plus,4,Passive,3,Low value,0.44425,583,Own data
+2,3,60 plus,4,Passive,4,Passive,0.36968,583,Own data
+2,3,60 plus,4,Passive,5,Churned,0.07500,583,Own data
+3,0,All ages,1,High value,1,High value,0.81522,2933,Own data
+3,0,All ages,1,High value,2,Mid value,0.12567,2933,Own data
+3,0,All ages,1,High value,3,Low value,0.01918,2933,Own data
+3,0,All ages,1,High value,4,Passive,0.00992,2933,Own data
+3,0,All ages,1,High value,5,Churned,0.03000,2933,Own data
+3,0,All ages,2,Mid value,1,High value,0.26465,3518,Own data
+3,0,All ages,2,Mid value,2,Mid value,0.50523,3518,Own data
+3,0,All ages,2,Mid value,3,Low value,0.17075,3518,Own data
+3,0,All ages,2,Mid value,4,Passive,0.01137,3518,Own data
+3,0,All ages,2,Mid value,5,Churned,0.04800,3518,Own data
+3,0,All ages,3,Low value,1,High value,0.03958,3634,Own data
+3,0,All ages,3,Low value,2,Mid value,0.17365,3634,Own data
+3,0,All ages,3,Low value,3,Low value,0.66651,3634,Own data
+3,0,All ages,3,Low value,4,Passive,0.04826,3634,Own data
+3,0,All ages,3,Low value,5,Churned,0.07200,3634,Own data
+3,0,All ages,4,Passive,1,High value,0.03665,719,Own data
+3,0,All ages,4,Passive,2,Mid value,0.10049,719,Own data
+3,0,All ages,4,Passive,3,Low value,0.36057,719,Own data
+3,0,All ages,4,Passive,4,Passive,0.34166,719,Own data
+3,0,All ages,4,Passive,5,Churned,0.16064,719,Own data
+3,1,Under 30,1,High value,1,High value,0.81012,904,Own data
+3,1,Under 30,1,High value,2,Mid value,0.12769,904,Own data
+3,1,Under 30,1,High value,3,Low value,0.01931,904,Own data
+3,1,Under 30,1,High value,4,Passive,0.01288,904,Own data
+3,1,Under 30,1,High value,5,Churned,0.03000,904,Own data
+3,1,Under 30,2,Mid value,1,High value,0.25734,1132,Own data
+3,1,Under 30,2,Mid value,2,Mid value,0.52225,1132,Own data
+3,1,Under 30,2,Mid value,3,Low value,0.16483,1132,Own data
+3,1,Under 30,2,Mid value,4,Passive,0.00757,1132,Own data
+3,1,Under 30,2,Mid value,5,Churned,0.04800,1132,Own data
+3,1,Under 30,3,Low value,1,High value,0.04457,1041,Own data
+3,1,Under 30,3,Low value,2,Mid value,0.21573,1041,Own data
+3,1,Under 30,3,Low value,3,Low value,0.65522,1041,Own data
+3,1,Under 30,3,Low value,4,Passive,0.01248,1041,Own data
+3,1,Under 30,3,Low value,5,Churned,0.07200,1041,Own data
+3,1,Under 30,4,Passive,1,High value,0.03665,43,Pooled fallback
+3,1,Under 30,4,Passive,2,Mid value,0.10049,43,Pooled fallback
+3,1,Under 30,4,Passive,3,Low value,0.36057,43,Pooled fallback
+3,1,Under 30,4,Passive,4,Passive,0.34166,43,Pooled fallback
+3,1,Under 30,4,Passive,5,Churned,0.16064,43,Pooled fallback
+3,2,30 to 59,1,High value,1,High value,0.81526,1937,Own data
+3,2,30 to 59,1,High value,2,Mid value,0.12870,1937,Own data
+3,2,30 to 59,1,High value,3,Low value,0.01853,1937,Own data
+3,2,30 to 59,1,High value,4,Passive,0.00751,1937,Own data
+3,2,30 to 59,1,High value,5,Churned,0.03000,1937,Own data
+3,2,30 to 59,2,Mid value,1,High value,0.29466,2029,Own data
+3,2,30 to 59,2,Mid value,2,Mid value,0.49688,2029,Own data
+3,2,30 to 59,2,Mid value,3,Low value,0.15155,2029,Own data
+3,2,30 to 59,2,Mid value,4,Passive,0.00891,2029,Own data
+3,2,30 to 59,2,Mid value,5,Churned,0.04800,2029,Own data
+3,2,30 to 59,3,Low value,1,High value,0.05338,1756,Own data
+3,2,30 to 59,3,Low value,2,Mid value,0.18497,1756,Own data
+3,2,30 to 59,3,Low value,3,Low value,0.67909,1756,Own data
+3,2,30 to 59,3,Low value,4,Passive,0.01057,1756,Own data
+3,2,30 to 59,3,Low value,5,Churned,0.07200,1756,Own data
+3,2,30 to 59,4,Passive,1,High value,0.03665,93,Pooled fallback
+3,2,30 to 59,4,Passive,2,Mid value,0.10049,93,Pooled fallback
+3,2,30 to 59,4,Passive,3,Low value,0.36057,93,Pooled fallback
+3,2,30 to 59,4,Passive,4,Passive,0.34166,93,Pooled fallback
+3,2,30 to 59,4,Passive,5,Churned,0.16064,93,Pooled fallback
+3,3,60 plus,1,High value,1,High value,0.81522,92,Pooled fallback
+3,3,60 plus,1,High value,2,Mid value,0.12567,92,Pooled fallback
+3,3,60 plus,1,High value,3,Low value,0.01918,92,Pooled fallback
+3,3,60 plus,1,High value,4,Passive,0.00992,92,Pooled fallback
+3,3,60 plus,1,High value,5,Churned,0.03000,92,Pooled fallback
+3,3,60 plus,2,Mid value,1,High value,0.11733,357,Own data
+3,3,60 plus,2,Mid value,2,Mid value,0.49867,357,Own data
+3,3,60 plus,2,Mid value,3,Low value,0.29867,357,Own data
+3,3,60 plus,2,Mid value,4,Passive,0.03733,357,Own data
+3,3,60 plus,2,Mid value,5,Churned,0.04800,357,Own data
+3,3,60 plus,3,Low value,1,High value,0.00443,837,Own data
+3,3,60 plus,3,Low value,2,Mid value,0.09757,837,Own data
+3,3,60 plus,3,Low value,3,Low value,0.65415,837,Own data
+3,3,60 plus,3,Low value,4,Passive,0.17185,837,Own data
+3,3,60 plus,3,Low value,5,Churned,0.07200,837,Own data
+3,3,60 plus,4,Passive,1,High value,0.00875,583,Own data
+3,3,60 plus,4,Passive,2,Mid value,0.09331,583,Own data
+3,3,60 plus,4,Passive,3,Low value,0.40823,583,Own data
+3,3,60 plus,4,Passive,4,Passive,0.33971,583,Own data
+3,3,60 plus,4,Passive,5,Churned,0.15000,583,Own data
+4,0,All ages,1,High value,1,High value,0.79841,2933,Own data
+4,0,All ages,1,High value,2,Mid value,0.12308,2933,Own data
+4,0,All ages,1,High value,3,Low value,0.01879,2933,Own data
+4,0,All ages,1,High value,4,Passive,0.00972,2933,Own data
+4,0,All ages,1,High value,5,Churned,0.05000,2933,Own data
+4,0,All ages,2,Mid value,1,High value,0.25576,3518,Own data
+4,0,All ages,2,Mid value,2,Mid value,0.48824,3518,Own data
+4,0,All ages,2,Mid value,3,Low value,0.16501,3518,Own data
+4,0,All ages,2,Mid value,4,Passive,0.01098,3518,Own data
+4,0,All ages,2,Mid value,5,Churned,0.08000,3518,Own data
+4,0,All ages,3,Low value,1,High value,0.03753,3634,Own data
+4,0,All ages,3,Low value,2,Mid value,0.16467,3634,Own data
+4,0,All ages,3,Low value,3,Low value,0.63203,3634,Own data
+4,0,All ages,3,Low value,4,Passive,0.04577,3634,Own data
+4,0,All ages,3,Low value,5,Churned,0.12000,3634,Own data
+4,0,All ages,4,Passive,1,High value,0.03234,719,Own data
+4,0,All ages,4,Passive,2,Mid value,0.08866,719,Own data
+4,0,All ages,4,Passive,3,Low value,0.31815,719,Own data
+4,0,All ages,4,Passive,4,Passive,0.30146,719,Own data
+4,0,All ages,4,Passive,5,Churned,0.25939,719,Own data
+4,1,Under 30,1,High value,1,High value,0.79342,904,Own data
+4,1,Under 30,1,High value,2,Mid value,0.12506,904,Own data
+4,1,Under 30,1,High value,3,Low value,0.01892,904,Own data
+4,1,Under 30,1,High value,4,Passive,0.01261,904,Own data
+4,1,Under 30,1,High value,5,Churned,0.05000,904,Own data
+4,1,Under 30,2,Mid value,1,High value,0.24869,1132,Own data
+4,1,Under 30,2,Mid value,2,Mid value,0.50470,1132,Own data
+4,1,Under 30,2,Mid value,3,Low value,0.15929,1132,Own data
+4,1,Under 30,2,Mid value,4,Passive,0.00731,1132,Own data
+4,1,Under 30,2,Mid value,5,Churned,0.08000,1132,Own data
+4,1,Under 30,3,Low value,1,High value,0.04227,1041,Own data
+4,1,Under 30,3,Low value,2,Mid value,0.20457,1041,Own data
+4,1,Under 30,3,Low value,3,Low value,0.62133,1041,Own data
+4,1,Under 30,3,Low value,4,Passive,0.01183,1041,Own data
+4,1,Under 30,3,Low value,5,Churned,0.12000,1041,Own data
+4,1,Under 30,4,Passive,1,High value,0.03234,43,Pooled fallback
+4,1,Under 30,4,Passive,2,Mid value,0.08866,43,Pooled fallback
+4,1,Under 30,4,Passive,3,Low value,0.31815,43,Pooled fallback
+4,1,Under 30,4,Passive,4,Passive,0.30146,43,Pooled fallback
+4,1,Under 30,4,Passive,5,Churned,0.25939,43,Pooled fallback
+4,2,30 to 59,1,High value,1,High value,0.79845,1937,Own data
+4,2,30 to 59,1,High value,2,Mid value,0.12605,1937,Own data
+4,2,30 to 59,1,High value,3,Low value,0.01815,1937,Own data
+4,2,30 to 59,1,High value,4,Passive,0.00736,1937,Own data
+4,2,30 to 59,1,High value,5,Churned,0.05000,1937,Own data
+4,2,30 to 59,2,Mid value,1,High value,0.28475,2029,Own data
+4,2,30 to 59,2,Mid value,2,Mid value,0.48018,2029,Own data
+4,2,30 to 59,2,Mid value,3,Low value,0.14646,2029,Own data
+4,2,30 to 59,2,Mid value,4,Passive,0.00862,2029,Own data
+4,2,30 to 59,2,Mid value,5,Churned,0.08000,2029,Own data
+4,2,30 to 59,3,Low value,1,High value,0.05062,1756,Own data
+4,2,30 to 59,3,Low value,2,Mid value,0.17540,1756,Own data
+4,2,30 to 59,3,Low value,3,Low value,0.64396,1756,Own data
+4,2,30 to 59,3,Low value,4,Passive,0.01002,1756,Own data
+4,2,30 to 59,3,Low value,5,Churned,0.12000,1756,Own data
+4,2,30 to 59,4,Passive,1,High value,0.03234,93,Pooled fallback
+4,2,30 to 59,4,Passive,2,Mid value,0.08866,93,Pooled fallback
+4,2,30 to 59,4,Passive,3,Low value,0.31815,93,Pooled fallback
+4,2,30 to 59,4,Passive,4,Passive,0.30146,93,Pooled fallback
+4,2,30 to 59,4,Passive,5,Churned,0.25939,93,Pooled fallback
+4,3,60 plus,1,High value,1,High value,0.79841,92,Pooled fallback
+4,3,60 plus,1,High value,2,Mid value,0.12308,92,Pooled fallback
+4,3,60 plus,1,High value,3,Low value,0.01879,92,Pooled fallback
+4,3,60 plus,1,High value,4,Passive,0.00972,92,Pooled fallback
+4,3,60 plus,1,High value,5,Churned,0.05000,92,Pooled fallback
+4,3,60 plus,2,Mid value,1,High value,0.11339,357,Own data
+4,3,60 plus,2,Mid value,2,Mid value,0.48190,357,Own data
+4,3,60 plus,2,Mid value,3,Low value,0.28863,357,Own data
+4,3,60 plus,2,Mid value,4,Passive,0.03608,357,Own data
+4,3,60 plus,2,Mid value,5,Churned,0.08000,357,Own data
+4,3,60 plus,3,Low value,1,High value,0.00421,837,Own data
+4,3,60 plus,3,Low value,2,Mid value,0.09252,837,Own data
+4,3,60 plus,3,Low value,3,Low value,0.62031,837,Own data
+4,3,60 plus,3,Low value,4,Passive,0.16296,837,Own data
+4,3,60 plus,3,Low value,5,Churned,0.12000,837,Own data
+4,3,60 plus,4,Passive,1,High value,0.00772,583,Own data
+4,3,60 plus,4,Passive,2,Mid value,0.08233,583,Own data
+4,3,60 plus,4,Passive,3,Low value,0.36021,583,Own data
+4,3,60 plus,4,Passive,4,Passive,0.29974,583,Own data
+4,3,60 plus,4,Passive,5,Churned,0.25000,583,Own data

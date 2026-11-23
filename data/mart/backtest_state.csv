@@ -1,0 +1,21 @@
+chain,year,state_id,state,predicted_customers,actual_customers
+Age-banded,1997,1,High value,892.2,1005
+Age-banded,1997,2,Mid value,900.0,820
+Age-banded,1997,3,Low value,971.3,944
+Age-banded,1997,4,Passive,137.6,128
+Age-banded,1997,5,Churned,0.0,4
+Age-banded,1998,1,High value,955.9,1178
+Age-banded,1998,2,Mid value,887.4,691
+Age-banded,1998,3,Low value,938.7,843
+Age-banded,1998,4,Passive,119.0,183
+Age-banded,1998,5,Churned,0.0,6
+Pooled,1997,1,High value,881.1,1005
+Pooled,1997,2,Mid value,895.9,820
+Pooled,1997,3,Low value,983.8,944
+Pooled,1997,4,Passive,140.2,128
+Pooled,1997,5,Churned,0.0,4
+Pooled,1998,1,High value,938.1,1178
+Pooled,1998,2,Mid value,889.5,691
+Pooled,1998,3,Low value,959.8,843
+Pooled,1998,4,Passive,113.7,183
+Pooled,1998,5,Churned,0.0,6

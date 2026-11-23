@@ -1,0 +1,24 @@
+/// What-if parameter: the discount rate applied to projected value. 4% to 16%.
+table 'Discount Rate'
+	lineageTag: 6462bdd8-e53a-543d-af02-16a39afdcf44
+
+	column 'Discount rate'
+		dataType: double
+		formatString: 0%
+		lineageTag: d51f8432-74b6-53fc-9ecc-38c3cbc6c58f
+		summarizeBy: none
+		sourceColumn: Discount rate
+
+		annotation SummarizationSetBy = User
+
+	partition 'Discount Rate' = m
+		mode: import
+		source =
+				let
+				    Rates = List.Transform({4..16}, each _ / 100),
+				    Source = Table.FromList(Rates, Splitter.SplitByNothing(), type table [Discount rate = number])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

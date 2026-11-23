@@ -1,0 +1,13 @@
+test_id,layer,test,failures,result
+1,Raw,Row counts match the PKDD'99 documentation (8 tables),0,Pass
+2,Staging,"Primary keys are unique (account, client, disp, trans, loan, card)",0,Pass
+3,Staging,All transaction dates parse and fall in 1993-1998,0,Pass
+4,Staging,Every account has exactly one owner,0,Pass
+5,Mart,Rebuilt end-of-day balance reconciles to the source within 3 CZK on every account-day,0,Pass
+6,Mart,Customer-year panel is complete from opening year to 1998,0,Pass
+7,Mart,Value components sum to annual value,0,Pass
+8,Model,Every transition-matrix row sums to 1 with no negative cell,0,Pass
+9,Model,"Projected state probabilities sum to 1 per customer, year and scenario",0,Pass
+10,Model,Survival probability never increases from one year to the next,0,Pass
+11,Model,Portfolio CLV falls as the attrition scenario gets harsher,0,Pass
+12,Model,Every customer has a projection for each of the 5 years in each of the 4 scenarios,0,Pass

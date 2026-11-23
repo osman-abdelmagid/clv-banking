@@ -1,0 +1,52 @@
+/// The five Markov states.
+table State
+	lineageTag: edbead25-0ff1-5077-bf94-da586edf76f9
+
+	column 'State ID'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 8e2fc3fc-ade5-5310-b3fd-83ce9e223bb4
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = User
+
+	column State
+		dataType: string
+		lineageTag: 137354da-6f79-5733-a660-cbdfbd45a181
+		summarizeBy: none
+		sourceColumn: state
+		sortByColumn: 'State ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'State group'
+		dataType: string
+		lineageTag: d86d1ee7-437c-5b2f-97ea-bd813c071e80
+		summarizeBy: none
+		sourceColumn: state_group
+
+		annotation SummarizationSetBy = User
+
+	column Definition
+		dataType: string
+		lineageTag: 9cb31464-85ed-55b3-929a-71df63d65056
+		summarizeBy: none
+		sourceColumn: definition
+
+		annotation SummarizationSetBy = User
+
+	partition State = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\dim_state.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"state_id", Int64.Type}, {"state", type text}, {"state_group", type text}, {"definition", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

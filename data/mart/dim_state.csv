@@ -1,0 +1,6 @@
+state_id,state,state_group,definition
+1,High value,Active,Engaged account with annualised value of 750 CZK or more
+2,Mid value,Active,Engaged account with annualised value from 250 up to 750 CZK
+3,Low value,Active,Engaged account with annualised value below 250 CZK (includes loss-making)
+4,Passive,Active,"Fewer than one discretionary transaction a month, whatever the balance"
+5,Churned,Churned,Relationship ended. Absorbing state

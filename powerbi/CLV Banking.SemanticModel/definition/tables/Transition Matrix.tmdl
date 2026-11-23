@@ -1,0 +1,109 @@
+/// Annual transition probabilities by scenario and age band.
+table 'Transition Matrix'
+	lineageTag: 937972c3-9d63-5f08-900e-3a63d7b4758a
+
+	column 'Scenario ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 281d54b6-5ef4-5eb7-b48d-df88585f41c6
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = User
+
+	column 'Age band ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2e4676d2-3fb5-5bc3-b0b5-578690dbd011
+		summarizeBy: none
+		sourceColumn: age_band_id
+
+		annotation SummarizationSetBy = User
+
+	column 'Matrix age band'
+		dataType: string
+		lineageTag: 7a8b4757-239b-546f-98a3-750b52c05dfb
+		summarizeBy: none
+		sourceColumn: age_band
+		sortByColumn: 'Age band ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'From state ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 23b1524d-5023-58b9-8e06-d717465a2432
+		summarizeBy: none
+		sourceColumn: from_state_id
+
+		annotation SummarizationSetBy = User
+
+	column 'From state'
+		dataType: string
+		lineageTag: 3cbab8f1-d68e-5863-a805-1b10e891079d
+		summarizeBy: none
+		sourceColumn: from_state
+		sortByColumn: 'From state ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'To state ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f28aeea1-a5bd-507c-83c9-64d04cfd45fd
+		summarizeBy: none
+		sourceColumn: to_state_id
+
+		annotation SummarizationSetBy = User
+
+	column 'To state'
+		dataType: string
+		lineageTag: c6b55a2c-7c8b-5233-bc82-359ab2334ec2
+		summarizeBy: none
+		sourceColumn: to_state
+		sortByColumn: 'To state ID'
+
+		annotation SummarizationSetBy = User
+
+	column Probability
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 289f9d93-1e9d-500e-a26e-46b6254249e5
+		summarizeBy: none
+		sourceColumn: probability
+
+		annotation SummarizationSetBy = User
+
+	column 'Observed transitions from'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8e05ced7-7677-5b14-a649-6658d215fe6c
+		summarizeBy: none
+		sourceColumn: observed_transitions_from
+
+		annotation SummarizationSetBy = User
+
+	column 'Estimate source'
+		dataType: string
+		lineageTag: 367669ad-c6ae-5a04-bf73-aca9ddd05fc7
+		summarizeBy: none
+		sourceColumn: estimate_source
+
+		annotation SummarizationSetBy = User
+
+	partition 'Transition Matrix' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\transition_matrix.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"scenario_id", Int64.Type}, {"age_band_id", Int64.Type}, {"age_band", type text}, {"from_state_id", Int64.Type}, {"from_state", type text}, {"to_state_id", Int64.Type}, {"to_state", type text}, {"probability", type number}, {"observed_transitions_from", Int64.Type}, {"estimate_source", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

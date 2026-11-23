@@ -1,0 +1,5 @@
+scenario_id,scenario,base_attrition,note
+1,Observed only,0.00,"No attrition beyond the handful of closures in the data. An upper bound, not a forecast."
+2,Low attrition,0.03,3% base annual attrition.
+3,Base case,0.06,6% base annual attrition. Used for all headline figures.
+4,High attrition,0.10,10% base annual attrition.

@@ -1,0 +1,9 @@
+model,horizon_year,predicted_year,customers,median_abs_error,mean_abs_error,top_decile_precision,separation_czk,portfolio_error_pct
+M0 Naive carry-forward,1,1997,2901,172.8,397.6,0.646,2852,-18.1
+M1 Baseline Markov,1,1997,2901,239.3,500.6,0.230,1317,-15.0
+M2 Age-banded Markov,1,1997,2901,240.9,501.4,0.275,1709,-14.4
+M3 Final model,1,1997,2901,213.0,398.9,0.643,2843,-13.1
+M0 Naive carry-forward,2,1998,2901,288.7,590.7,0.436,2010,-25.6
+M1 Baseline Markov,2,1998,2901,329.1,574.7,0.230,1249,-19.4
+M2 Age-banded Markov,2,1998,2901,331.7,573.6,0.230,1485,-18.4
+M3 Final model,2,1998,2901,331.7,549.3,0.440,2081,-17.6

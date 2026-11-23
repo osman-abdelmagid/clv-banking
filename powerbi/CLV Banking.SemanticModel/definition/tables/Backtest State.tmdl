@@ -1,0 +1,70 @@
+/// Backtest: predicted against actual customers per state.
+table 'Backtest State'
+	lineageTag: 9adcbf6e-0841-5c8b-82ab-22225fd566b5
+
+	column Chain
+		dataType: string
+		lineageTag: baa96a28-725e-5fde-905b-07eb66ecaa34
+		summarizeBy: none
+		sourceColumn: chain
+
+		annotation SummarizationSetBy = User
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e150dfb-dc7e-51d8-8ff1-31decc39721b
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column 'State ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8e2551c8-a74a-5d76-9f1d-8950bd224517
+		summarizeBy: none
+		sourceColumn: state_id
+
+		annotation SummarizationSetBy = User
+
+	column State
+		dataType: string
+		lineageTag: bc8740ce-158d-57c0-92ce-c05a61dc4edd
+		summarizeBy: none
+		sourceColumn: state
+		sortByColumn: 'State ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'Predicted customers'
+		dataType: double
+		formatString: #,0
+		lineageTag: 6319fceb-94d6-5940-ae98-06248f4d9ec5
+		summarizeBy: none
+		sourceColumn: predicted_customers
+
+		annotation SummarizationSetBy = User
+
+	column 'Actual customers'
+		dataType: int64
+		formatString: #,0
+		lineageTag: dad473f9-8940-5299-8a45-e90ce41fdde2
+		summarizeBy: none
+		sourceColumn: actual_customers
+
+		annotation SummarizationSetBy = User
+
+	partition 'Backtest State' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\backtest_state.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"chain", type text}, {"year", Int64.Type}, {"state_id", Int64.Type}, {"state", type text}, {"predicted_customers", type number}, {"actual_customers", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

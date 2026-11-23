@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.4.0/schema.json",
+  "name": "dynamics",
+  "displayName": "Customer dynamics",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "slicer_scenario",
+      "target": "retention_curves",
+      "type": "NoFilter"
+    },
+    {
+      "source": "slicer_scenario",
+      "target": "clv_by_scenario",
+      "type": "NoFilter"
+    }
+  ]
+}

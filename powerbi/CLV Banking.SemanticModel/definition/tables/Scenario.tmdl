@@ -1,0 +1,53 @@
+/// Attrition scenarios. Base case is the default.
+table Scenario
+	lineageTag: afd59603-d272-5ae7-9c07-fd7ec770e3d4
+
+	column 'Scenario ID'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 4300b178-aacc-5efd-86ee-6a480d2594ad
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+		annotation SummarizationSetBy = User
+
+	column Scenario
+		dataType: string
+		lineageTag: 76d480d2-49c6-507f-aa74-65e227c0a65e
+		summarizeBy: none
+		sourceColumn: scenario
+		sortByColumn: 'Scenario ID'
+
+		annotation SummarizationSetBy = User
+
+	column 'Base attrition'
+		dataType: double
+		formatString: 0%
+		lineageTag: d398d595-26d3-508f-9edf-9f3f17b44a4e
+		summarizeBy: none
+		sourceColumn: base_attrition
+
+		annotation SummarizationSetBy = User
+
+	column Note
+		dataType: string
+		lineageTag: 2504e3e8-1985-5109-9d7d-439cc6d3f303
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = User
+
+	partition Scenario = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ProjectFolder & "\data\mart\dim_scenario.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"scenario_id", Int64.Type}, {"scenario", type text}, {"base_attrition", type number}, {"note", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+
